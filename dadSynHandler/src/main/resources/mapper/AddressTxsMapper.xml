@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.dadchain.mapper.AddressTxsMapper">
+  <resultMap id="BaseResultMap" type="com.github.dadchain.model.dao.AddressTxs">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="address" jdbcType="VARCHAR" property="address" />
+    <id column="tx_index" jdbcType="BIGINT" property="txIndex" />
+    <result column="tx_type" jdbcType="INTEGER" property="txType" />
+  </resultMap>
+
+  <insert id="batchInsert" parameterType="java.util.List">
+    INSERT INTO `tbl_address_txs` (
+    `address`,
+    `tx_index`,
+    `tx_type`
+    )
+    VALUES
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+      #{item.address},
+      #{item.txIndex},
+      #{item.txType}
+      )
+    </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.dadchain.mapper.AddressAllMapper">
+  <resultMap id="BaseResultMap" type="com.github.dadchain.model.dao.AddressAll">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="address" jdbcType="VARCHAR" property="address" />
+    <result column="first_time" jdbcType="INTEGER" property="firstTime" />
+  </resultMap>
+
+  <insert id="batchInsert" parameterType="java.util.List" >
+    INSERT INTO `tbl_address_all` (
+    `address`,
+    `first_time`
+    )
+    VALUES
+    <foreach collection="list" index="index" item="item" separator=",">
+      (
+      #{item.address},
+      #{item.firstTime}
+      )
+    </foreach>
+    ON DUPLICATE KEY UPDATE address = VALUES(address)
+  </insert>
+</mapper>
