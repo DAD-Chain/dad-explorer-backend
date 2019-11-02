@@ -1,0 +1,14 @@
+[Unit]
+Description=DAD explorer api service
+After=network.target
+ 
+[Service]
+ExecStart=/root/service_java/explorerapi/explorer_api_entrypoint.sh
+
+ExecReload=/bin/kill
+KillMode=mixed
+Restart=on-failure
+RestartSec=42s
+ 
+[Install]
+WantedBy=multi-user.target
