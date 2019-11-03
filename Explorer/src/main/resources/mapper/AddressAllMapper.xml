@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.dadchain.mapper.AddressAllMapper">
+  <resultMap id="BaseResultMap" type="com.github.dadchain.model.dao.AddressAll">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="address" jdbcType="VARCHAR" property="address" />
+    <result column="first_time" jdbcType="INTEGER" property="firstTime" />
+  </resultMap>
+    <select id="selectAllAddressRangeCount" resultType="com.github.dadchain.model.dto.NewAddressSummaryDto">
+        select count(1) as newCount
+        from tbl_address_all
+        where first_time &gt;= #{begin_day} AND <![CDATA[ first_time <= #{end_day} ]]>
+    </select>
+
+    <select id="selectAllAddressCount" resultType="java.lang.Integer">
+        select count(1) as count
+        from tbl_address_all
+    </select>
+
+</mapper>

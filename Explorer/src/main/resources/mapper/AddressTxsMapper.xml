@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.dadchain.mapper.AddressTxsMapper">
+  <resultMap id="BaseResultMap" type="com.github.dadchain.model.dao.AddressTxs">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="address" jdbcType="VARCHAR" property="address" />
+    <id column="tx_index" jdbcType="BIGINT" property="txIndex" />
+    <result column="tx_type" jdbcType="INTEGER" property="txType" />
+  </resultMap>
+
+
+  <select id="selectAddressTxIndexsByPage" resultType="java.lang.Long">
+    select tx_index
+    from tbl_address_txs
+    where address=#{address}
+    <if test="txType != 0">
+      and tx_type = #{txType}
+    </if>
+
+    order by tx_index DESC
+    limit #{startIndex}, #{pageSize}
+  </select>
+
+  <select id="selectAddressTxCount" resultType="java.lang.Long">
+    select count(1)
+    from tbl_address_txs
+    where address=#{address}
+    <if test="txType != 0">
+      and tx_type = #{txType}
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.dadchain.mapper.TxDailySummaryMapper">
+  <resultMap id="BaseResultMap" type="com.github.dadchain.model.dao.TxDailySummary">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="time_day" jdbcType="INTEGER" property="timeDay" />
+    <result column="tx_count" jdbcType="INTEGER" property="txCount" />
+  </resultMap>
+  <select id="getDailTxCountSummary" resultType="com.github.dadchain.model.dto.TxDailySummaryDto">
+    select time_day * 24 * 60 * 60 as timeDay, tx_count as txCount
+    from tbl_tx_daily_summary
+    where time_day &gt;= #{begin_day} AND <![CDATA[ time_day <= #{end_day} ]]>
+    order by time_day ASC
+  </select>
+
+</mapper>
