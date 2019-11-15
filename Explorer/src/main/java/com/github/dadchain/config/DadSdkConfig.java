@@ -14,11 +14,11 @@ public class DadSdkConfig {
 
     @Bean("faucetAccount")
     public Account faucetAccount() throws Exception {
-        return getFacuetOntSdk().getWalletMgr().getAccount(paramsConfig.FACUET_WALLET_ADDRESS, paramsConfig.FACUET_WALLET_PWD);
+        return getFacuetDadSdk().getWalletMgr().getAccount(paramsConfig.FACUET_WALLET_ADDRESS, paramsConfig.FACUET_WALLET_PWD);
     }
 
-    @Bean("faucetOntSdk")
-    public OntSdk getFacuetOntSdk() {
+    @Bean("faucetDadSdk")
+    public OntSdk getFacuetDadSdk() {
         OntSdk wm = OntSdk.getInstance();
         wm.setRestful(paramsConfig.MASTERNODE_RESTFUL_URL);
         wm.openWalletFile(paramsConfig.FACUET_WALLET_FILE);
