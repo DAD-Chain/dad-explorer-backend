@@ -28,7 +28,7 @@ RUN apk add --no-cache ca-certificates bash
 RUN addgroup DAD && \
     adduser -G DAD -s /bin/sh -D DAD -h /home/DAD
 
-COPY --from=builder /dad-explorer/Explorer/target/explorer-1.1.0.RELEASE.jar /home/DAD/app.jar
+COPY --from=builder /dad-explorer/Explorer/target/explorer-1.3.0.RELEASE.jar /home/DAD/app.jar
 COPY --from=builder /dad-explorer/Explorer/config /home/DAD/config
 
 # # Run as non root

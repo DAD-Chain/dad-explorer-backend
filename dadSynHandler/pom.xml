@@ -5,7 +5,7 @@
 
 	<groupId>com.github.dadchain</groupId>
 	<artifactId>dadsynhandler</artifactId>
-	<version>1.1.1-RELEASE</version>
+	<version>1.3.0-RELEASE</version>
 	<name>dadsynhandler</name>
 	<description>explorer information sync handler for DAD</description>
 	<packaging>jar</packaging>

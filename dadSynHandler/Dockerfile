@@ -31,7 +31,7 @@ RUN apk add --no-cache ca-certificates bash
 RUN addgroup DAD && \
     adduser -G DAD -s /bin/sh -D DAD -h /home/DAD
 
-COPY --from=builder /dad-explorer/dadsynHandler/target/dadsynhandler-1.0.0-SNAPSHOT.jar /home/DAD/app.jar
+COPY --from=builder /dad-explorer/dadsynHandler/target/dadsynhandler-1.3.0-SNAPSHOT.jar /home/DAD/app.jar
 COPY --from=builder /dad-explorer/dadSynHandler/config /home/DAD/config
 
 # # Run as non root
